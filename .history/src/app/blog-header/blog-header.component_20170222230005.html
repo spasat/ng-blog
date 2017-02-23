@@ -1,8 +1,0 @@
-<nav class="mdl-navigation">
-    <a class="mdl-navigation__link" *ngIf="!isLoggedIn()" (click)="login()">Login</a>
-    <a class="mdl-navigation__link" *ngIf="!isLoggedIn()">Sing in</a>
-
-
-    <a class="mdl-navigation__link" *ngIf="isLoggedIn()">Hello, {{ getUser()?.firstname }}</a>
-    <a class="mdl-navigation__link" *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
-</nav>
