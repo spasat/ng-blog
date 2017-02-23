@@ -1,0 +1,8 @@
+<form [formGroup]="loginForm" novalidate>
+    <md-input-container [floatPlaceholder]="auto" dividerColor="primary|accent|warn" align="start">
+        <input mdInput formControlName="email" type="email" required placeholder="Email">
+    </md-input-container>
+    <md-input-container [floatPlaceholder]="auto" dividerColor="primary|accent|warn" align="start">
+        <input mdInput formControlName="password" type="password" required placeholder="Password">
+    </md-input-container>
+</form>

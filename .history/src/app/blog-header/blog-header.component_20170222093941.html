@@ -1,0 +1,9 @@
+<mdl-layout-header-row>
+    <mdl-layout-title>Title</mdl-layout-title>
+    <mdl-layout-spacer></mdl-layout-spacer>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" *ngIf="isLoggedIn" (click)="login()">Login</a>
+        <a class="mdl-navigation__link" *ngIf="!isLoggedIn" (click)="Logout">Logout</a>
+        <a class="mdl-navigation__link">Singin</a>
+    </nav>
+</mdl-layout-header-row>

@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)" novalidate>
+    <h1>Login</h1>
+    <p>
+        <md-input-container [floatPlaceholder]="auto" dividerColor="primary|accent|warn" align="start">
+            <input mdInput formControlName="email" type="email" required placeholder="Email">
+        </md-input-container>
+    </p>
+    <p>
+        <md-input-container [floatPlaceholder]="auto" dividerColor="primary|accent|warn" align="start">
+            <input mdInput formControlName="password" type="password" required placeholder="Password">
+        </md-input-container>
+    </p>
+    <p>
+        <button md-raised-button type="submit">Login</button>
+    </p>
+</form>

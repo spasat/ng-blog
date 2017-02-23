@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm" novalidate>
+    <md-grid-list cols="4">
+        <md-grid-tile [colspan]="1"></md-grid-tile>
+        <md-grid-tile [colspan]="2">
+            <p>
+                <md-input-container [floatPlaceholder]="auto" dividerColor="primary|accent|warn" align="start">
+                    <input mdInput formControlName="email" type="email" required placeholder="Email">
+                </md-input-container>
+            </p>
+            <p>
+                <md-input-container [floatPlaceholder]="auto" dividerColor="primary|accent|warn" align="start">
+                    <input mdInput formControlName="password" type="password" required placeholder="Password">
+                </md-input-container>
+            </p>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1">
+
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1"></md-grid-tile>
+    </md-grid-list>
+</form>

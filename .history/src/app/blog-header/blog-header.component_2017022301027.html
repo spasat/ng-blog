@@ -1,0 +1,7 @@
+<nav>
+    <a class="mat-ripple" *ngIf="!isLoggedIn()" (click)="login()">Login</a>
+    <a *ngIf="!isLoggedIn()">Sing in</a>
+
+    <span *ngIf="isLoggedIn()">Hello, {{ getUser()?.firstname }}</span>
+    <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+</nav>

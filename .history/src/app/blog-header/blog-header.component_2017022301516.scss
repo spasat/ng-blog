@@ -1,0 +1,14 @@
+$nav-font-size: 0.9em;
+$nav-item-space: 10px;
+nav {
+    a {
+        cursor: pointer;
+        font-size: $nav-font-size;
+    }
+}
+
+a {
+    cursor: pointer;
+    font-size: 0.9em;
+    padding-left: 10px;
+}
