@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthServiceService } from './../services/auth-service.service';
+import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  error: string;
 
-  constructor(private fb: FormBuilder, private auth: AuthServiceService, private router: Router) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -20,14 +21,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  submitForm(value: any) {
-    if (this.loginForm.status === 'VALID') {
-      this.auth.login(value.email, value.password);
-
-      this.loginForm.reset();
-      this.router.navigate(['']);
-    }
-
+  onSubmit() {
+    this.error = '';
+    this.auth
+      .login(this.loginForm.get('email').value, this.loginForm.get('password').value)
+      .subscribe((res) => {
+        this.loginForm.reset();
+        this.router.navigate(['']);
+      },
+      (err) => {
+        this.error = 'Bad credetials!';
+      }
+      );
   }
 
 }

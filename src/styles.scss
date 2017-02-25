@@ -24,6 +24,22 @@ body {
     height: 100%;
 }
 
-.spacer {
+.mat-input-container {
+    width: 100%;
+}
+
+.mat-card-header-text {
     flex: 1 1 auto;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
 }

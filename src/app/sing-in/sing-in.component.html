@@ -1,0 +1,33 @@
+<form [formGroup]="singInForm" (ngSubmit)="singInForm.valid && onSubmit()" novalidate>
+    <md-card>
+        <h1>Sing In</h1>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="firstname" type="text" required placeholder="First Name">
+            </md-input-container>
+        </p>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="lastname" type="text" required placeholder="Last Name">
+            </md-input-container>
+        </p>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="email" type="email" required placeholder="Email">
+            </md-input-container>
+        </p>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="password" type="password" required placeholder="Password">
+            </md-input-container>
+        </p>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="password_confirm" type="password" required placeholder="Password Confirmation">
+            </md-input-container>
+        </p>
+        <p>
+            <button md-raised-button type="submit" [disabled]="!singInForm.valid">Sing in</button>
+        </p>
+    </md-card>
+</form>

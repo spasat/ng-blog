@@ -7,17 +7,31 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { BlogHeaderComponent } from './blog-header/blog-header.component';
+import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthServiceService } from './services/auth-service.service';
+import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
+import { SingInComponent } from './sing-in/sing-in.component';
+import { UserService } from './services/user.service';
+import { HomeComponent } from './home/home.component';
+import { ArticleService } from './services/article.service';
+import { SortifyPipe } from './pipes/shortify.pipe';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { AccountComponent } from './account/account.component';
+import { NoAuthGuardService } from './guards/no-auth-guard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlogHeaderComponent,
-    LoginComponent
+    HeaderComponent,
+    LoginComponent,
+    SingInComponent,
+    HomeComponent,
+    SortifyPipe,
+    NotFoundComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -25,11 +39,15 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     RouterModule,
     MaterialModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [
-    AuthServiceService,
-    AUTH_PROVIDERS
+    AUTH_PROVIDERS,
+    AuthService,
+    UserService,
+    ArticleService,
+    AuthGuardService,
+    NoAuthGuardService
   ],
   bootstrap: [AppComponent]
 })

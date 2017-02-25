@@ -1,0 +1,27 @@
+<div class="content">
+
+    <h1>Blog</h1>
+
+    <div *ngIf="articles.length">
+        <md-card *ngFor="let article of articles|slice:0:10">
+            <md-card-header>
+                <md-card-title>
+                    <h3>
+                        <a>{{ article?.title }}</a>
+                    </h3>
+                </md-card-title>
+                <md-card-subtitle>
+                    autor: {{ article?.author?.firstname}} {{ article?.author?.lastname}} (<small>{{ article?.created_at|date }}</small>)
+                </md-card-subtitle>
+            </md-card-header>
+            <md-card-content>
+                <p>
+                    {{article?.body|shortify:500:' ...'}}
+                </p>
+            </md-card-content>
+            <md-card-actions>
+                <button md-button>More</button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

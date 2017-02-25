@@ -1,0 +1,9 @@
+<a class="header-title" routerLink="/">Blog</a>
+<span class="spacer"></span>
+<nav>
+    <a *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
+    <a *ngIf="!isLoggedIn()" routerLink="/singin">Sing in</a>
+
+    <a *ngIf="isLoggedIn()" routerLink="/account">Hello, {{ getUser()?.firstname }}</a>
+    <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+</nav>

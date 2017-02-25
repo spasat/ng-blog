@@ -1,5 +1,5 @@
 $nav-item-font-size: 0.9em;
-$nav-item-space: 10px;
+$nav-item-space: 15px;
 nav {
     a:visited,
     a {
@@ -11,8 +11,17 @@ nav {
     a:hover {
         text-decoration: underline;
     }
-    span {
-        font-size: $nav-item-font-size;
-        padding-left: $nav-item-space;
+    a+a {
+        margin-left: $nav-item-space
     }
+}
+
+.header-title {
+    color: white;
+    margin-left: $nav-item-space;
+    text-decoration: none;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
