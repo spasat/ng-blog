@@ -23,4 +23,9 @@ export class UserService {
   getUser() {
 
   }
+
+  update(id, data) {
+    const url = `${environment.apiBaseUrl}/users/${id}`;
+    
+  }
 }

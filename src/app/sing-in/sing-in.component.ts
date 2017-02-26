@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { RIGHTS } from '../models/rights';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { validateConfirm } from '../validators/password.validator';
 
 @Component({
   selector: 'app-sing-in',
@@ -33,21 +34,9 @@ export class SingInComponent implements OnInit {
         is_subscribed: [false]
       },
       {
-        validator: this.validatePassword
+        validator: validateConfirm('password', 'password_confirm')
       }
     );
-  }
-
-  validatePassword(form: FormGroup) {
-    if (form.get('password').value === form.get('password_confirm').value) {
-      return null;
-    }
-
-    return {
-      validatePassword: {
-        valid: false
-      }
-    };
   }
 
   onSubmit() {
@@ -62,8 +51,8 @@ export class SingInComponent implements OnInit {
         this.auth.setSessionUser(res.user);
         this.router.navigate(['/']);
       },
-      (err) => {
-        this.errors = JSON.stringify(err);
+      (res) => {
+        this.errors = res.json().error;
       }
       );
   }

@@ -1,12 +1,42 @@
 <md-card>
     <h1>Account</h1>
-    <br>
-    <p><strong>First Name:</strong> {{user.firstname}}</p>
-    <p><strong>Last Name:</strong> {{user.lastname}}</p>
-    <p><strong>Email:</strong> {{user.email}}</p>
-    <p><strong>Password:</strong> ***** &nbsp;&nbsp;<button md-raised-button>Modify</button></p>
-    <br>
-    <p class="text-right">
-        <button md-raised-button>Edit</button>
-    </p>
+    <div *ngIf="!editMode">
+        <br>
+        <p><strong>First Name:</strong> {{user.firstname}}</p>
+        <p><strong>Last Name:</strong> {{user.lastname}}</p>
+        <p><strong>Email:</strong> {{user.email}}</p>
+        <p>
+            <strong>Password:</strong> ***** &nbsp;&nbsp;
+            <button md-raised-button (click)="openPasswordEditDialog()">Modify</button>
+        </p>
+
+        <br>
+        <p class="text-right">
+            <button md-raised-button (click)="activateEditMode()">Edit</button>
+        </p>
+    </div>
+
+    <form *ngIf="editMode" [formGroup]="userForm" (ngSubmit)="userForm.valid && onEditSubmit()" novalidate>
+        <br>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="firstname" type="text" required placeholder="First Name">
+            </md-input-container>
+        </p>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="lastname" type="text" required placeholder="Last Name">
+            </md-input-container>
+        </p>
+        <p>
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput formControlName="email" type="email" required placeholder="Email">
+            </md-input-container>
+        </p>
+        <p class="text-right">
+            <button md-raised-button type="button" (click)="deactivateEditMode()">Cancel</button>
+            <button md-raised-button type="submit" [disabled]="!userForm.valid">Save</button>
+        </p>
+    </form>
+
 </md-card>

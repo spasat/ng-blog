@@ -23,6 +23,7 @@ import { AccountComponent } from './account/account.component';
 import { NoAuthGuardService } from './guards/no-auth-guard.service';
 import { UcfirstPipe } from './pipes/ucfirst.pipe';
 import { ArticleComponent } from './article/article.component';
+import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ArticleComponent } from './article/article.component';
     NotFoundComponent,
     AccountComponent,
     UcfirstPipe,
-    ArticleComponent
+    ArticleComponent,
+    PasswordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,9 @@ import { ArticleComponent } from './article/article.component';
     ArticleService,
     AuthGuardService,
     NoAuthGuardService
+  ],
+  entryComponents: [
+    PasswordDialogComponent
   ],
   bootstrap: [AppComponent]
 })

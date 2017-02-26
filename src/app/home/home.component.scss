@@ -4,6 +4,9 @@ md-card {
 
 md-card-title h3 {
     margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: none;
 }
 
 .pagination {
