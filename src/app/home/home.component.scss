@@ -2,11 +2,20 @@ md-card {
     margin-bottom: 15px;
 }
 
-md-card-actions,
-md-card-subtitle {
-    text-align: right;
-}
-
 md-card-title h3 {
     margin: 0;
+}
+
+.pagination {
+    margin-top: 15px;
+    ul {
+        list-style: none;
+        padding-left: 0px;
+        li {
+            display: inline-block;
+            a {
+                min-width: 0;
+            }
+        }
+    }
 }

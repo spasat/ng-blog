@@ -1,0 +1,49 @@
+<md-card *ngIf="article">
+    <md-card-header>
+        <div md-card-avatar class="example-header-image"></div>
+        <md-card-title>
+            <h1>
+                {{ article.title}}
+            </h1>
+        </md-card-title>
+        <md-card-subtitle>
+            <span *ngFor="let cat of article?.category, let isLast=last">
+                {{ cat|ucfirst }}
+                <span *ngIf="!isLast">, </span>
+            </span>
+        </md-card-subtitle>
+    </md-card-header>
+    <img md-card-image [src]="article?.image">
+    <md-card-content>
+        <p class="text-left">
+            &nbsp;&nbsp;&nbsp;&nbsp; {{article.body}}
+        </p>
+        <p class="text-right">
+            by: {{ article?.author?.firstname}} {{ article?.author?.lastname}}
+            <br><small>{{ article?.created_at|date }}</small>
+        </p>
+    </md-card-content>
+</md-card>
+<br>
+
+<md-card>
+    <md-card-title-group>
+        <md-card-title>Comments</md-card-title>
+    </md-card-title-group>
+    <md-card-content>
+        <div *ngIf="article?.comments.length">
+            <md-list>
+                <md-list-item *ngFor="let comment of article.comments">
+                    <h3 md-line> {{comment.author.firstname + ' ' + comment.author.lastname}} </h3>
+                    <p md-line>
+                        <span class="comment-message">{{comment.message}}</span>
+                        <small class="comment-date text-right">({{comment.created_at|date}})</small>
+                    </p>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-card-content>
+    <md-card-actions align="start">
+        <button md-raised-button (click)="addComment">Comment</button>
+    </md-card-actions>
+</md-card>

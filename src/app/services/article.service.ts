@@ -17,7 +17,17 @@ export class ArticleService {
     const query = `limit=${limit}&skip=${offset}`;
     return this.http
       .get(url, { search: query, headers: this.headers })
-      .map((res) => res.json());
+      .map((res) => res.json())
+      ;
+  }
+
+  getArticle(slug: string) {
+    const url = `${environment.apiBaseUrl}/articles/${slug}`;
+
+    return this.http
+      .get(url, { headers: this.headers })
+      .map(res => res.json())
+      ;
   }
 
 }

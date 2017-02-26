@@ -58,13 +58,12 @@ export class AuthService {
         password: password
       }, { headers: this.headers })
       .map((res) => res.json())
-      .do((res) => {
+      .do(
+      (res) => {
         this.setSessionToken(res.token);
         this.setSessionUser(res.user);
       },
-      (err) => {
-        this.removeSessionUser();
-      }
+      (err) => this.removeSessionUser()
       );
   }
 

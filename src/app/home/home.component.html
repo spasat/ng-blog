@@ -1,27 +1,39 @@
-<div class="content">
+<h1>Home</h1>
 
-    <h1>Blog</h1>
+<div *ngIf="articles.length">
+    <md-card *ngFor="let article of articles|slice:0:10">
+        <md-card-header>
+            <md-card-title>
+                <h3>
+                    <a>{{ article?.title }}</a>
+                </h3>
+            </md-card-title>
+            <md-card-subtitle>
+                <span *ngFor="let cat of article.category, let isLast=last">
+                        {{ cat|ucfirst }}
+                        <span *ngIf="!isLast">, </span>
+                </span>
+            </md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+            <p>
+                {{article?.body|shortify:500:' ...'}}
+            </p>
+            <p class="text-right">
+                by: {{ article?.author?.firstname}} {{ article?.author?.lastname}}
+                <br><small>{{ article?.created_at|date }}</small>
+            </p>
+        </md-card-content>
+        <md-card-actions class="text-right">
+            <a md-raised-button routerLink="articles/{{article.slug}}">More</a>
+        </md-card-actions>
+    </md-card>
 
-    <div *ngIf="articles.length">
-        <md-card *ngFor="let article of articles|slice:0:10">
-            <md-card-header>
-                <md-card-title>
-                    <h3>
-                        <a>{{ article?.title }}</a>
-                    </h3>
-                </md-card-title>
-                <md-card-subtitle>
-                    autor: {{ article?.author?.firstname}} {{ article?.author?.lastname}} (<small>{{ article?.created_at|date }}</small>)
-                </md-card-subtitle>
-            </md-card-header>
-            <md-card-content>
-                <p>
-                    {{article?.body|shortify:500:' ...'}}
-                </p>
-            </md-card-content>
-            <md-card-actions>
-                <button md-button>More</button>
-            </md-card-actions>
-        </md-card>
+    <div *ngIf="total > perPage" class="pagination">
+        <ul>
+            <li *ngFor="let p of getPagesArr(), let i=index, let last=last, let first=first">
+                <a md-button (click)="setPage(p)" [color]="p === page? 'accent' : 'primary'">{{p}}</a>
+            </li>
+        </ul>
     </div>
 </div>
