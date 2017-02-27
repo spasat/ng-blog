@@ -28,7 +28,7 @@ export class ArticleComponent implements OnInit {
       .articleService
       .getArticle(this.slug)
       .subscribe(
-      (data) => { this.article = data; },
+      (data) => { this.article = data;},
       (err) => { this.router.navigate(['/404']); }
       )
       ;

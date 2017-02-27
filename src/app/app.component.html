@@ -1,21 +1,7 @@
 <md-sidenav-container>
     <md-sidenav #sidenav mode="push" align="start">
-        <md-list>
-            <md-list-item>
-                <md-icon md-list-icon>home</md-icon>
-                <a md-line routerLink="/" (click)="sidenav.close()">
-                    Home
-                </a>
-            </md-list-item>
-            <md-list-item>
-                <md-icon md-list-icon>account_circle</md-icon>
-                <a md-line routerLink="/account" (click)="sidenav.close()">
-                    Account
-                </a>
-            </md-list-item>
-        </md-list>
+        <app-side-navigation [sideNav]="sidenav"></app-side-navigation>
     </md-sidenav>
-
 
     <md-toolbar color="primary">
         <button md-icon-button (click)="sidenav.open()">

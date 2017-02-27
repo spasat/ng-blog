@@ -9,11 +9,12 @@ import { PasswordDialogComponent } from '../password-dialog/password-dialog.comp
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
   user: UserInterface;
   userForm: FormGroup;
+  userFormError: string;
   editMode = false;
 
   constructor(
@@ -30,9 +31,9 @@ export class AccountComponent implements OnInit {
 
   buildUserForm() {
     this.userForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      email: ['', Validators.required],
+      firstname: [this.user.firstname, Validators.required],
+      lastname: [this.user.lastname, Validators.required],
+      email: [this.user.email, Validators.required],
     });
   }
 
@@ -44,13 +45,40 @@ export class AccountComponent implements OnInit {
     this.editMode = false;
   }
 
+  onEditCancel() {
+    this.deactivateEditMode();
+    // reset form when cancel edit modee
+    this.buildUserForm();
+    this.userFormError = '';
+  }
+
   onEditSubmit() {
-    console.log(this.userForm.value);
+    const user = this.userForm.value;
+    this.userService
+      .update(user)
+      .subscribe(
+      (data) => {
+        this.user = this.auth.getSessionUser();
+        this.deactivateEditMode();
+      },
+      (err) => {
+        try {
+          const res = err.json();
+          this.userFormError = res.error.toString();
+        } catch (e) {
+          this.userFormError = 'Something went wrong';
+        }
+      }
+      );
   }
 
   openPasswordEditDialog() {
-    let passwordDialog = this.dialog.open(PasswordDialogComponent);
-  
+    const passwordDialog = this.dialog.open(PasswordDialogComponent);
+    passwordDialog
+      .afterClosed()
+      .subscribe(
+      (data) => { },
+      (err) => { console.log(err); });
   }
 
 }

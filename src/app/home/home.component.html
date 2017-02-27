@@ -30,9 +30,10 @@
     </md-card>
 
     <div *ngIf="total > perPage" class="pagination">
+        <hr>
         <ul>
             <li *ngFor="let p of getPagesArr(), let i=index, let last=last, let first=first">
-                <a md-button (click)="setPage(p)" [color]="p === page? 'accent' : 'primary'">{{p}}</a>
+                <a md-button (click)="goToPage(p)" [color]="p === page? 'accent' : 'primary'">{{p}}</a>
             </li>
         </ul>
     </div>

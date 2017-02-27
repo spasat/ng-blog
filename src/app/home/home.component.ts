@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../services/article.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,25 @@ export class HomeComponent implements OnInit {
   total: number;
   perPage = 3;
   page = 1;
-  constructor(private articleService: ArticleService) { }
+
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
     if (!this.articles.length) {
-      this.getArticles();
+      this.activatedRoute
+        .queryParams
+        .subscribe(
+        (q) => {
+          const page = Math.abs(q['page'] && q['page'] > 0 ? q['page'] : 1);
+          this.page = page;
+          this.getArticles();
+        },
+        (err) => { }
+        );
     }
   }
 
@@ -27,17 +42,23 @@ export class HomeComponent implements OnInit {
       (data) => {
         this.articles = data.articles;
         this.total = <number>data.count;
+
+        if (!this.isValidPage(this.page)) {
+          this.router.navigate(['/']);
+        }
       },
       (err) => { }
       );
   }
 
-  setPage(page: number) {
-    if (page > 0 && page <= this.getPages()) {
-      this.page = page;
-      console.log('blah');
-      this.getArticles();
+  goToPage(page: number) {
+    if (this.isValidPage(page)) {
+      this.router.navigate(['/'], { queryParams: { page: page } });
     }
+  }
+
+  isValidPage(page: number): boolean {
+    return page > 0 && page <= this.getPages();
   }
 
   getPages(): number {

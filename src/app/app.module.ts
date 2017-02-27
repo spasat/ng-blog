@@ -24,6 +24,11 @@ import { NoAuthGuardService } from './guards/no-auth-guard.service';
 import { UcfirstPipe } from './pipes/ucfirst.pipe';
 import { ArticleComponent } from './article/article.component';
 import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
+import { ArticleCommentsComponent } from './article-comments/article-comments.component';
+import { CommentsService } from './services/comments.service';
+import { SideNavigationComponent } from './side-navigation/side-navigation.component';
+import { AboutComponent } from './about/about.component';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 
 @NgModule({
@@ -38,7 +43,11 @@ import { PasswordDialogComponent } from './password-dialog/password-dialog.compo
     AccountComponent,
     UcfirstPipe,
     ArticleComponent,
-    PasswordDialogComponent
+    PasswordDialogComponent,
+    ArticleCommentsComponent,
+    SideNavigationComponent,
+    AboutComponent,
+    CreateArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +62,7 @@ import { PasswordDialogComponent } from './password-dialog/password-dialog.compo
     AuthService,
     UserService,
     ArticleService,
+    CommentsService,
     AuthGuardService,
     NoAuthGuardService
   ],

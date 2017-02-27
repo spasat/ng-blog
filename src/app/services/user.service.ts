@@ -20,12 +20,27 @@ export class UserService {
       .map((res) => res.json());
   }
 
-  getUser() {
+  /**
+   * Update user parameters
+   * @param id
+   */
+  update(data, id = null) {
 
-  }
+    if (!id) {
+      id = this.auth.getSessionUser()._id;
+    }
 
-  update(id, data) {
     const url = `${environment.apiBaseUrl}/users/${id}`;
-    
+    return this.authHttp
+      .put(url, data, { headers: this.headers })
+      .map(res => res.json())
+      .do(
+      (res) => {
+        this.auth.setSessionToken(res.token);
+        this.auth.setSessionUser(res.user);
+      },
+      (err) => console.log
+      )
+      ;
   }
 }

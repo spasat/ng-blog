@@ -1,0 +1,21 @@
+<md-list>
+    <md-list-item>
+        <md-icon md-list-icon>home</md-icon>
+        <a md-line routerLink="/" (click)="sideNav.close()">Home</a>
+    </md-list-item>
+
+    <md-list-item *ngIf="isLoggedIn()">
+        <md-icon md-list-icon>account_circle</md-icon>
+        <a md-line routerLink="/account" (click)="sideNav.close()">Account</a>
+    </md-list-item>
+
+    <md-list-item *ngIf="isLoggedIn()">
+        <md-icon md-list-icon>add_circle</md-icon>
+        <a md-line (click)="sideNav.close()" routerLink="/">Create Article</a>
+    </md-list-item>
+
+    <md-list-item>
+        <md-icon md-list-icon>help</md-icon>
+        <a md-line routerLink="/about" (click)="sideNav.close()">About</a>
+    </md-list-item>
+</md-list>

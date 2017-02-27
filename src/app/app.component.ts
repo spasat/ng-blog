@@ -20,6 +20,13 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.setPageTitle();
+  }
+
+  /**
+   * Set page title from router data
+   */
+  setPageTitle() {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
@@ -31,7 +38,10 @@ export class AppComponent implements OnInit {
       })
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
-      .subscribe((event) => this.titleService.setTitle(event['title'] ? event['title'] : 'Blog'));
+      .subscribe((event) => {
+        const title = (event['title'] ? event['title'] + '|' : '') + 'Blog';
+        this.titleService.setTitle(title);
+      });
   }
 
 }
