@@ -1,0 +1,10 @@
+.input-files {
+    overflow: hidden;
+    max-width: 100%;
+    position: relative;
+}
+
+[type=file] {
+    position: absolute;
+    left: -999px;
+}

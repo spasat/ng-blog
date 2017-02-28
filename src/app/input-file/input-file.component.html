@@ -1,0 +1,12 @@
+<div class="input-file">
+    <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+        <input mdInput readonly [value]="localFile?.file.name" (click)="openFileDialog()" type="text " placeholder="Choose a file... " [required]="required ">
+        <span mdPrefix>
+            <button md-raised-button (click)="openFileDialog()" type="button">File</button>&nbsp;&nbsp;
+        </span>
+        <md-hint *ngIf="fileName" align="end">
+            {{fileName}}
+        </md-hint>
+    </md-input-container>
+    <input type="file" #fileInput (change)="onFileChange($event)">
+</div>

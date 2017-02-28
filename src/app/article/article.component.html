@@ -13,14 +13,15 @@
             </span>
         </md-card-subtitle>
     </md-card-header>
-    <img md-card-image [src]="article?.image">
+    <img md-card-image *ngIf="article.image" [src]="imageHost + article.image">
     <md-card-content>
-        <p class="text-left">
-            &nbsp;&nbsp;&nbsp;&nbsp; {{article.body}}
-        </p>
+        <blockquote class="text-left">{{article.body}}</blockquote>
         <p class="text-right">
             by: {{ article?.author?.firstname}} {{ article?.author?.lastname}}
             <br><small>{{ article?.created_at|date }}</small>
+        </p>
+        <p *ngIf="isOwner()">
+            <button md-raised-button (click)="onDelete()" color="warn">Delete</button>
         </p>
     </md-card-content>
 </md-card>

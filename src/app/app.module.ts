@@ -28,8 +28,9 @@ import { ArticleCommentsComponent } from './article-comments/article-comments.co
 import { CommentsService } from './services/comments.service';
 import { SideNavigationComponent } from './side-navigation/side-navigation.component';
 import { AboutComponent } from './about/about.component';
-import { CreateArticleComponent } from './create-article/create-article.component';
-
+import { ArticleCreateComponent } from './article-create/article-create.component';
+import { AclService } from './services/acl.service';
+import { InputFileComponent } from './input-file/input-file.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     ArticleCommentsComponent,
     SideNavigationComponent,
     AboutComponent,
-    CreateArticleComponent
+    ArticleCreateComponent,
+    InputFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     HttpModule,
     RouterModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     AUTH_PROVIDERS,
@@ -64,7 +66,8 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     ArticleService,
     CommentsService,
     AuthGuardService,
-    NoAuthGuardService
+    NoAuthGuardService,
+    AclService
   ],
   entryComponents: [
     PasswordDialogComponent

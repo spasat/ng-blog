@@ -1,3 +1,4 @@
 export const RIGHTS = {
-    USESR: 'USER'
+    USESR: 'USER',
+    ADMIN: 'ADMIN'
 };
