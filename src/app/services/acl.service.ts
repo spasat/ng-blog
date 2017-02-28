@@ -12,7 +12,13 @@ export class AclService {
 
   isArticleOwner(article) {
     const user = this.auth.getSessionUser();
-    if (!article.author || user._id === article.author._id || user.rights.indexOf(RIGHTS.ADMIN) !== -1) {
+    if (
+      user &&
+      (!article.author
+        || user._id === article.author._id
+        || user.rights.indexOf(RIGHTS.ADMIN) !== -1
+      )
+    ) {
       return true;
     }
     return false;

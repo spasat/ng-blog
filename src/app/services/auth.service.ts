@@ -17,6 +17,10 @@ export class AuthService {
   }
 
   initUserFromSession() {
+    if (!this.isLoggedIn()) {
+      this.removeSessionUser()
+    }
+
     if (!this.user && localStorage.getItem('user')) {
       try {
         const user = <UserInterface>JSON.parse(localStorage.getItem('user'));

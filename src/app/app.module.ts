@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { RouterModule } from '@angular/router';
 import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 
@@ -18,9 +18,9 @@ import { HomeComponent } from './home/home.component';
 import { ArticleService } from './services/article.service';
 import { SortifyPipe } from './pipes/shortify.pipe';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { IsLoggedInGuard } from './guards/is-logged-in.guard';
+import { AlreadyLoggedInGuard } from './guards/already-logged-in.guard';
 import { AccountComponent } from './account/account.component';
-import { NoAuthGuardService } from './guards/no-auth-guard.service';
 import { UcfirstPipe } from './pipes/ucfirst.pipe';
 import { ArticleComponent } from './article/article.component';
 import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
@@ -65,8 +65,8 @@ import { InputFileComponent } from './input-file/input-file.component';
     UserService,
     ArticleService,
     CommentsService,
-    AuthGuardService,
-    NoAuthGuardService,
+    IsLoggedInGuard,
+    AlreadyLoggedInGuard,
     AclService
   ],
   entryComponents: [

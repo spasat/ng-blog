@@ -16,6 +16,7 @@ export class ArticleComponent implements OnInit {
   imageHost = environment.apiImageHost;
 
   constructor(
+    private auth: AuthService,
     private articleService: ArticleService,
     private acl: AclService,
     private router: Router,
@@ -52,6 +53,10 @@ export class ArticleComponent implements OnInit {
       (err) => {
         console.log(err.json());
       });
+  }
+
+  showComments() {
+    return this.auth.isLoggedIn() || (this.article && this.article.hasOwnProperty('comments') && this.article.comments.length);
   }
 
 }
