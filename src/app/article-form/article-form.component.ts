@@ -82,7 +82,11 @@ export class ArticleFormComponent implements OnInit {
 
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        formData.append(key, data[key]);
+        let keyName = key;
+        if (data[key] instanceof Array) {
+          keyName += '[]';
+        }
+        formData.append(keyName, data[key]);
       }
     }
 
