@@ -32,7 +32,7 @@ export class ArticleComponent implements OnInit {
   private getArticle() {
     this
       .articleService
-      .getArticle(this.slug)
+      .getArticleBySlug(this.slug)
       .subscribe(
       (data) => { this.article = data; },
       (err) => { this.router.navigate(['/404']); }

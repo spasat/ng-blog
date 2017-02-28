@@ -22,8 +22,17 @@ export class ArticleService {
       ;
   }
 
-  getArticle(slug: string) {
+  getArticleBySlug(slug: string) {
     const url = `${environment.apiBaseUrl}/articles/${slug}`;
+
+    return this.http
+      .get(url, { headers: this.headers })
+      .map(res => res.json())
+      ;
+  }
+
+  getArticle(articleId: string) {
+    const url = `${environment.apiBaseUrl}/articles/${articleId}`;
 
     return this.http
       .get(url, { headers: this.headers })
@@ -44,5 +53,5 @@ export class ArticleService {
       .delete(url, { headers: this.headers })
       .map(res => res.json());
   }
-  
+
 }

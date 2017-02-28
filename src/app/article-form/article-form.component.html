@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+    <p *ngIf="error" class="errors">
+        {{this.error}}
+    </p>
+
+    <md-input-container [floatPlaceholder]="auto" align="start">
+        <input mdInput formControlName="title" type="text" required placeholder="Title">
+    </md-input-container>
+
+    <div formArrayName="category">
+        <h5>Categories:</h5>
+        <div *ngFor="let cat of form.controls['category']?.controls; let i=index">
+            <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+                <input mdInput [formControl]="cat" type="text" placeholder="Add category">
+                <span mdSuffix>
+                            <button md-raised-button (click)="removeCategory(i)" color="warn" type="button">Remove</button>
+                        </span>
+            </md-input-container>
+        </div>
+        <div class="text-right">
+            <button md-raised-button (click)="addCategory()" type="button">Add</button>
+        </div>
+    </div>
+
+    <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+        <textarea mdInput mdTextareaAutosize minRows="3" formControlName="body" placeholder="Body" required></textarea>
+    </md-input-container>
+
+    <p>
+        <app-input-file [fileName]="data?.image" (file)="imageFile=$event"></app-input-file>
+    </p>
+
+    <p class="text-right">
+        <button md-raised-button type="submit" [disabled]="!form.valid">Create</button>
+    </p>
+</form>

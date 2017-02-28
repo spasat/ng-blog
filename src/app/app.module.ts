@@ -31,6 +31,8 @@ import { AboutComponent } from './about/about.component';
 import { ArticleCreateComponent } from './article-create/article-create.component';
 import { AclService } from './services/acl.service';
 import { InputFileComponent } from './input-file/input-file.component';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleFormComponent } from './article-form/article-form.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { InputFileComponent } from './input-file/input-file.component';
     AboutComponent,
     ArticleCreateComponent,
     InputFileComponent,
+    ArticleEditComponent,
+    ArticleFormComponent,
   ],
   imports: [
     BrowserModule,

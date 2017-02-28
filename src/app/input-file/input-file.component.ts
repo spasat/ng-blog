@@ -8,7 +8,7 @@ import { Component, OnInit, Output, Input, ViewChild, EventEmitter, ElementRef }
 export class InputFileComponent implements OnInit {
   @Input() fileName: string;
   @Input() required: boolean;
-  @Output('file') file: EventEmitter<{ name: string, file: File }> = new EventEmitter();
+  @Output() file: EventEmitter<{ name: string, file: File }> = new EventEmitter<{ name: string, file: File }>();
   localFile: { name: string, file: File };
 
   @ViewChild('fileInput') fileInput: ElementRef;
