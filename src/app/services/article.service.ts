@@ -54,4 +54,11 @@ export class ArticleService {
       .map(res => res.json());
   }
 
+  update(articleId, data: FormData) {
+    const url = `${environment.apiBaseUrl}/articles/${articleId}`;
+    return this.authHttp
+      .put(url, data)
+      .map(res => res.json());
+  }
+
 }

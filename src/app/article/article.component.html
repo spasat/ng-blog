@@ -21,6 +21,7 @@
             <br><small>{{ article?.created_at|date }}</small>
         </p>
         <p *ngIf="isOwner()">
+            <a md-raised-button routerLink="/articles/{{article._id}}/edit">Edit</a>
             <button md-raised-button (click)="onDelete()" color="warn">Delete</button>
         </p>
     </md-card-content>

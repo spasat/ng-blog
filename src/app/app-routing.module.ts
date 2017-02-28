@@ -11,6 +11,7 @@ import { AccountComponent } from './account/account.component';
 import { ArticleComponent } from './article/article.component';
 import { AboutComponent } from './about/about.component';
 import { ArticleCreateComponent } from './article-create/article-create.component';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
         canActivate: [AlreadyLoggedInGuard]
     },
     { path: 'articles/:slug', component: ArticleComponent },
+    { path: 'articles/:articleId/edit', component: ArticleEditComponent, canActivate: [AlreadyLoggedInGuard] },
 
     { path: '404', component: NotFoundComponent, data: { title: 'Not found!' } },
     { path: '**', redirectTo: '/404' }

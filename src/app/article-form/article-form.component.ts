@@ -8,8 +8,8 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 })
 export class ArticleFormComponent implements OnInit {
   @Input() error: string;
-  @Input() data;
   @Output() formSubmit: EventEmitter<FormData> = new EventEmitter<FormData>();
+  private _data;
 
   form: FormGroup;
   imageFile: { name: string, file: File };
@@ -19,6 +19,18 @@ export class ArticleFormComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+  }
+
+  @Input()
+  set data(data) {
+    this._data = data;
+    if (data) {
+      this.buildForm();
+    }
+  }
+
+  get data() {
+    return this._data;
   }
 
   buildForm() {
@@ -40,22 +52,23 @@ export class ArticleFormComponent implements OnInit {
   }
 
   getDefaultData(): { title: string, category: Array<string>, body: string, image: string } {
-    const article = {
+    const defaultData = {
       title: '',
       category: ['Article'],
       body: '',
       image: ''
     };
 
-    if (this.data) {
-      for (const key in this.data) {
-        if (this.data.hasOwnProperty(key) && article.hasOwnProperty(key) && article[key]) {
-          article[key] = this.data[key];
+    const data = this._data;
+    if (data) {
+      for (const key in defaultData) {
+        if (defaultData.hasOwnProperty(key) && data.hasOwnProperty(key) && data[key]) {
+          defaultData[key] = data[key];
         }
       }
     }
 
-    return article;
+    return defaultData;
   }
 
   onSubmit() {

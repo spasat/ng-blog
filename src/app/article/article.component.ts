@@ -56,7 +56,8 @@ export class ArticleComponent implements OnInit {
   }
 
   showComments() {
-    return this.auth.isLoggedIn() || (this.article && this.article.hasOwnProperty('comments') && this.article.comments.length);
+    return this.auth.isLoggedIn()
+      || (this.article && this.article.hasOwnProperty('comments') && this.article.comments.length);
   }
 
 }
