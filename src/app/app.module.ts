@@ -23,7 +23,6 @@ import { AlreadyLoggedInGuard } from './guards/already-logged-in.guard';
 import { AccountComponent } from './account/account.component';
 import { UcfirstPipe } from './pipes/ucfirst.pipe';
 import { ArticleComponent } from './article/article.component';
-import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
 import { ArticleCommentsComponent } from './article-comments/article-comments.component';
 import { CommentsService } from './services/comments.service';
 import { SideNavigationComponent } from './side-navigation/side-navigation.component';
@@ -33,6 +32,11 @@ import { AclService } from './services/acl.service';
 import { InputFileComponent } from './input-file/input-file.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
+
+import { DialogPasswordComponent } from './dialogs/password/password.component';
+import { DialogConfirmComponent } from './dialogs/confirm/confirm.component';
+import { BreadcrumbComponent } from './bredcrumb/breadcrumb.component';
+import { GravatarService } from './services/gravatar.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { ArticleFormComponent } from './article-form/article-form.component';
     AccountComponent,
     UcfirstPipe,
     ArticleComponent,
-    PasswordDialogComponent,
+    DialogPasswordComponent,
+    DialogConfirmComponent,
     ArticleCommentsComponent,
     SideNavigationComponent,
     AboutComponent,
@@ -54,13 +59,14 @@ import { ArticleFormComponent } from './article-form/article-form.component';
     InputFileComponent,
     ArticleEditComponent,
     ArticleFormComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule,
-    MaterialModule,
     AppRoutingModule,
   ],
   providers: [
@@ -71,10 +77,12 @@ import { ArticleFormComponent } from './article-form/article-form.component';
     CommentsService,
     IsLoggedInGuard,
     AlreadyLoggedInGuard,
-    AclService
+    AclService,
+    GravatarService
   ],
   entryComponents: [
-    PasswordDialogComponent
+    DialogPasswordComponent,
+    DialogConfirmComponent
   ],
   bootstrap: [AppComponent]
 })

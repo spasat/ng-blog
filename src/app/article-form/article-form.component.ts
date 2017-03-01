@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 })
 export class ArticleFormComponent implements OnInit {
   @Input() error: string;
+  @Input() buttonLabel: string;
   @Output() formSubmit: EventEmitter<FormData> = new EventEmitter<FormData>();
   private _data;
 
@@ -82,11 +83,19 @@ export class ArticleFormComponent implements OnInit {
 
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
-        let keyName = key;
+
         if (data[key] instanceof Array) {
-          keyName += '[]';
+          // map form data as array
+          data[key]
+            .forEach(item => {
+              if (item) {
+                formData.append(key + '[]', item);
+              }
+            });
+          continue;
         }
-        formData.append(keyName, data[key]);
+        formData.append(key, data[key]);
+
       }
     }
 

@@ -15,6 +15,7 @@ export class ArticleEditComponent implements OnInit {
   _id: string;
   article;
   formError: string;
+  breadcrumb: Array<{ title: string, url: string }> = [];
 
   constructor(
     private auth: AuthService,
@@ -26,8 +27,15 @@ export class ArticleEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.buildBreadcrumbs();
+
     this._id = this.activeRoute.snapshot.params['articleId'];
     this.getArticle();
+  }
+
+  buildBreadcrumbs() {
+    this.breadcrumb.push({ title: 'Home', url: '/' });
+    this.breadcrumb.push({ title: 'Articles', url: '/' });
   }
 
   private checkPermissions() {
@@ -44,6 +52,8 @@ export class ArticleEditComponent implements OnInit {
       (data) => {
         this.article = data;
         this.checkPermissions();
+        this.breadcrumb.push({ title: data.title, url: '/articles/' + data.slug });
+        this.breadcrumb.push({ title: 'Edit', url: undefined });
       },
       (err) => {
         this.router.navigate(['/404']);

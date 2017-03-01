@@ -3,7 +3,7 @@
         <h1>Article Creation</h1>
 
         <div *ngIf="!success">
-            <app-article-form [error]="error" (formSubmit)="onFormSubmit($event)" #articleForm></app-article-form>
+            <app-article-form [buttonLabel]="'Create'" [error]="error" (formSubmit)="onFormSubmit($event)" #articleForm></app-article-form>
         </div>
 
         <div *ngIf="success">

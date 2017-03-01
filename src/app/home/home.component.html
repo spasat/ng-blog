@@ -1,3 +1,7 @@
+<md-card class="breadcrumb-container">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+</md-card>
+
 <h1>Home</h1>
 
 <div *ngIf="articles.length">
@@ -33,7 +37,7 @@
         <hr>
         <ul>
             <li *ngFor="let p of getPagesArr(), let i=index, let last=last, let first=first">
-                <a md-button (click)="goToPage(p)" [color]="p === page? 'accent' : 'primary'">{{p}}</a>
+                <a md-raised-button (click)="goToPage(p)" [color]="p === page? 'primary' : ''">{{p}}</a>
             </li>
         </ul>
     </div>

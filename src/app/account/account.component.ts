@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { MdDialog } from '@angular/material';
-import { PasswordDialogComponent } from '../password-dialog/password-dialog.component';
+import { DialogPasswordComponent } from '../dialogs/password/password.component';
 
 @Component({
   selector: 'app-account',
@@ -73,7 +73,7 @@ export class AccountComponent implements OnInit {
   }
 
   openPasswordEditDialog() {
-    const passwordDialog = this.dialog.open(PasswordDialogComponent);
+    const passwordDialog = this.dialog.open(DialogPasswordComponent);
     passwordDialog
       .afterClosed()
       .subscribe(

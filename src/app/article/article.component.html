@@ -1,3 +1,7 @@
+<md-card class="breadcrumb-container">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+</md-card>
+<br>
 <md-card *ngIf="article">
     <md-card-header>
         <div md-card-avatar class="example-header-image"></div>
@@ -20,7 +24,7 @@
             by: {{ article?.author?.firstname}} {{ article?.author?.lastname}}
             <br><small>{{ article?.created_at|date }}</small>
         </p>
-        <p *ngIf="isOwner()">
+        <p *ngIf="isOwner()" class="text-right">
             <a md-raised-button routerLink="/articles/{{article._id}}/edit">Edit</a>
             <button md-raised-button (click)="onDelete()" color="warn">Delete</button>
         </p>

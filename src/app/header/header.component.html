@@ -1,9 +1,33 @@
 <a class="header-title" routerLink="/">Blog</a>
 <span class="spacer"></span>
 <nav>
-    <a *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
-    <a *ngIf="!isLoggedIn()" routerLink="/singin">Sing in</a>
+    <span *ngIf="!isLoggedIn()">
+        <a routerLink="/login">Login</a>
+        <a routerLink="/singin">Sing in</a>
+    </span>
 
-    <a *ngIf="isLoggedIn()" routerLink="/account">Hello, {{ getUser()?.firstname }}</a>
-    <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+    <span *ngIf="isLoggedIn()">
+        <a routerLink="/account">
+            <img [src]="avatarSrc" alt="user" class="avatar">
+            Hello, {{ getUser()?.firstname }}
+        </a>
+        <button md-icon-button [mdMenuTriggerFor]="menu">
+            <md-icon>more_vert</md-icon>
+        </button>
+        
+        <md-menu #menu="mdMenu">
+            <button md-menu-item routerLink="/account">
+                <md-icon>account_circle</md-icon>
+                <span>Account</span>
+    </button>
+    <button md-menu-item routerLink="">
+                <md-icon>list</md-icon>
+                <span>My Articles</span>
+            </button>
+    <button md-menu-item (click)="logout()">
+                <md-icon>exit_to_app</md-icon>
+                <span>Logout</span>
+            </button>
+    </md-menu>
+    </span>
 </nav>

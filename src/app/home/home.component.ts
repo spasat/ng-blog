@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   total: number;
   perPage = 3;
   page = 1;
+  breadcrumb: Array<{ title: string, url: string }> = [];
 
   constructor(
     private articleService: ArticleService,
@@ -20,18 +21,26 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (!this.articles.length) {
-      this.activatedRoute
-        .queryParams
-        .subscribe(
-        (q) => {
-          const page = Math.abs(q['page'] && q['page'] > 0 ? q['page'] : 1);
-          this.page = page;
-          this.getArticles();
-        },
-        (err) => { }
-        );
-    }
+    this.buildBreadcrumbs();
+    this.getPageParam();
+  }
+
+  buildBreadcrumbs() {
+    this.breadcrumb.push({ title: 'Blog', url: '/' });
+    this.breadcrumb.push({ title: 'Home', url: undefined });
+  }
+
+  getPageParam() {
+    this.activatedRoute
+      .queryParams
+      .subscribe(
+      (q) => {
+        const page = Math.abs(q['page'] && q['page'] > 0 ? q['page'] : 1);
+        this.page = page;
+        this.getArticles();
+      },
+      (err) => { }
+      );
   }
 
   getArticles() {

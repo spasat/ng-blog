@@ -1,0 +1,8 @@
+<div *ngIf="data?.length" class="breadcrumb">
+    <ul>
+        <li *ngFor="let item of data">
+            <a *ngIf="item.url" routerLink="{{item.url}}">{{item.title}}</a>
+            <span *ngIf="!item.url">{{item.title}}</span>
+        </li>
+    </ul>
+</div>

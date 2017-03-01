@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { validateConfirm } from '../validators/password.validator';
-import { UserService } from '../services/user.service';
-import { AuthService } from '../services/auth.service';
+import { validateConfirm } from '../../validators/password.validator';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-password-dialog',
-  templateUrl: './password-dialog.component.html',
-  styleUrls: ['./password-dialog.component.scss']
+  selector: 'app-dialog-password',
+  templateUrl: './password.component.html',
+  styleUrls: ['./password.component.scss']
 })
-export class PasswordDialogComponent implements OnInit {
+export class DialogPasswordComponent implements OnInit {
   passwordForm: FormGroup;
   error = '';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private userService: UserService,
-    public dialogRef: MdDialogRef<PasswordDialogComponent>
+    public dialogRef: MdDialogRef<DialogPasswordComponent>
   ) { }
 
   ngOnInit() {

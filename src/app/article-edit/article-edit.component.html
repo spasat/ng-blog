@@ -1,12 +1,19 @@
+<md-card class="breadcrumb-container">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+</md-card>
+<br>
 <md-card>
     <md-card-content>
-        <h1>Edit Article</h1>
+        <h1>
+            Edit Article
+            <a routerLink="/articles/{{article?.slug}}" md-raised-button>Cancel</a>
+        </h1>
 
         <md-input-container floatPlaceholder="auto" dividerColor="primary">
             <input mdInput type="text" disabled [value]="article?.slug">
         </md-input-container>
 
-        <app-article-form [error]="formError" [data]="article" (formSubmit)="onFormSubmit($event)"></app-article-form>
+        <app-article-form [buttonLabel]="'Save'" [error]="formError" [data]="article" (formSubmit)="onFormSubmit($event)"></app-article-form>
 
     </md-card-content>
 </md-card>

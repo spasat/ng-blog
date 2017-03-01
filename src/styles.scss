@@ -43,3 +43,21 @@ body {
 .text-center {
     text-align: center;
 }
+
+.flex-right {
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+md-dialog-actions.flex-right {
+    button+button {
+        margin-left: 10px;
+    }
+}
+
+.breadcrumb-container {
+    padding: 0 24px !important;
+    app-breadcrumb {
+        display: block;
+    }
+}
