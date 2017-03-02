@@ -3,7 +3,6 @@ import { AuthService } from './../services/auth.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { Md5 } from 'ts-md5/dist/md5';
-import { GravatarService } from '../services/gravatar.service';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +13,10 @@ export class HeaderComponent implements OnInit {
   avatarSrc: string;
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private gravatarService: GravatarService
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.avatarSrc = this.gravatarService
-      .getUserAvatarSrc(this.getUser().email, 20);
-
   }
 
   logout() {

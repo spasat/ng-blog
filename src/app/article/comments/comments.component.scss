@@ -1,0 +1,44 @@
+md-list-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.comment-message {
+    display: block;
+    padding: 10px 0 10px 15px;
+}
+
+.comment-date {
+    display: block;
+    margin-top: -5px;
+}
+
+.comments {
+    margin-bottom: 15px;
+    .comments-item {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 15px;
+        .comment-content {
+            h5 {
+                margin: 0 0 10px 0;
+                small {
+                    padding-left: 10px;
+                    font-size: 10px;
+                    font-weight: normal;
+                    opacity: 0.8;
+                }
+            }
+            flex: 1 1 auto;
+        }
+        .comment-author {
+            display: flex;
+            flex-direction: column;
+            padding-right: 15px;
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+}

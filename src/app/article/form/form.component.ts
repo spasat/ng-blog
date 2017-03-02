@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 
 @Component({
   selector: 'app-article-form',
-  templateUrl: './article-form.component.html',
-  styleUrls: ['./article-form.component.scss']
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
 export class ArticleFormComponent implements OnInit {
   @Input() error: string;

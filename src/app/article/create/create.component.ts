@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../services/article.service';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-article-create',
-  templateUrl: './article-create.component.html',
-  styleUrls: ['./article-create.component.scss'],
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.scss'],
 })
 export class ArticleCreateComponent implements OnInit {
   error: string;

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../services/article.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs/Rx';
+import 'rxjs/add/operator/delay';
+import { BusyService } from '../services/busy.service';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +13,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   articles = [];
   total: number;
-  perPage = 3;
+  perPage = 5;
   page = 1;
   breadcrumb: Array<{ title: string, url: string }> = [];
+  busy: Subscription;
 
   constructor(
     private articleService: ArticleService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private busyService: BusyService
   ) { }
 
   ngOnInit() {
@@ -45,8 +50,9 @@ export class HomeComponent implements OnInit {
 
   getArticles() {
     const skip = (this.page - 1) * this.perPage;
-    this.articleService
+    this.busyService.busy = this.articleService
       .getArticles(this.perPage, skip)
+      .delay(1000)
       .subscribe(
       (data) => {
         this.articles = data.articles;

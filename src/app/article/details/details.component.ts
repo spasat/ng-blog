@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../services/article.service';
+import { ArticleService } from '../../services/article.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { environment } from '../../environments/environment';
-import { AuthService } from '../services/auth.service';
-import { AclService } from '../services/acl.service';
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../../services/auth.service';
+import { AclService } from '../../services/acl.service';
 import { MdDialogRef, MdDialog } from '@angular/material';
-import { DialogConfirmComponent } from '../dialogs/confirm/confirm.component';
+import { DialogConfirmComponent } from '../../dialogs/confirm/confirm.component';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  selector: 'app-article-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleDetailsComponent implements OnInit {
   slug: string;
   article;
   imageHost = environment.apiImageHost;

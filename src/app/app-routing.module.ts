@@ -8,10 +8,10 @@ import { SingInComponent } from './sing-in/sing-in.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccountComponent } from './account/account.component';
-import { ArticleComponent } from './article/article.component';
+import { ArticleDetailsComponent } from './article//details/details.component';
 import { AboutComponent } from './about/about.component';
-import { ArticleCreateComponent } from './article-create/article-create.component';
-import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleCreateComponent } from './article/create/create.component';
+import { ArticleEditComponent } from './article/edit/edit.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -25,7 +25,7 @@ const routes: Routes = [
         data: { title: 'Article Creation' },
         canActivate: [AlreadyLoggedInGuard]
     },
-    { path: 'articles/:slug', component: ArticleComponent },
+    { path: 'articles/details/:slug', component: ArticleDetailsComponent },
     { path: 'articles/:articleId/edit', component: ArticleEditComponent, canActivate: [AlreadyLoggedInGuard] },
 
     { path: '404', component: NotFoundComponent, data: { title: 'Not found!' } },

@@ -29,7 +29,7 @@
             </p>
         </md-card-content>
         <md-card-actions class="text-right">
-            <a md-raised-button routerLink="articles/{{article.slug}}">More</a>
+            <a md-raised-button routerLink="articles/details/{{article.slug}}">More</a>
         </md-card-actions>
     </md-card>
 
@@ -40,5 +40,7 @@
                 <a md-raised-button (click)="goToPage(p)" [color]="p === page? 'primary' : ''">{{p}}</a>
             </li>
         </ul>
+        {{page * perPage - perPage}} - {{ page * perPage}} of {{ total }} articles
     </div>
+
 </div>

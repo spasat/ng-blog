@@ -1,0 +1,30 @@
+<div *ngIf="article?.comments" class="comments">
+    <div *ngFor="let comment of article?.comments" class="comments-item">
+        <div class="comment-author">
+            <img appGravatar alt="avatar" [email]="comment.author.email" [size]="'40'">
+        </div>
+        <div class="comment-content">
+            <h5>
+                {{ comment.author.firstname}} {{ comment.author.lastname}} <small>{{comment.created_at|date}}</small>
+            </h5>
+            <p>
+                {{comment.message}}
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="isLoggedIn()">
+    <br>
+    <form [formGroup]="form">
+
+        <md-input-container [floatPlaceholder]="auto" dividerColor="primary" align="start">
+            <textarea mdInput formControlName="message" required placeholder="Message..."></textarea>
+        </md-input-container>
+
+        <p class="text-right">
+            <button md-raised-button type="submit" (click)="onFormSubmit()">Add Comment</button>
+        </p>
+    </form>
+</div>

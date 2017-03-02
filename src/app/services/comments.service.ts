@@ -16,4 +16,12 @@ export class CommentsService {
       ;
   }
 
+  delete(articleId, commentId) {
+    const url = `${environment.apiBaseUrl}/articles/${articleId}/comments/${commentId}`;
+    return this.authHttp
+      .delete(url, { headers: this.headers })
+      .map(res => res.json())
+      ;
+  }
+
 }

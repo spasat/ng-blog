@@ -8,7 +8,7 @@
 
     <span *ngIf="isLoggedIn()">
         <a routerLink="/account">
-            <img [src]="avatarSrc" alt="user" class="avatar">
+            <img appGravatar [email]="getUser()?.email" [size]="20" alt="user" class="avatar">
             Hello, {{ getUser()?.firstname }}
         </a>
         <button md-icon-button [mdMenuTriggerFor]="menu">

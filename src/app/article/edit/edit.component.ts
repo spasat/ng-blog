@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleService } from '../services/article.service';
-import { AclService } from '../services/acl.service';
+import { ArticleService } from '../../services/article.service';
+import { AclService } from '../../services/acl.service';
 import { FormBuilder } from '@angular/forms';
-import { ArticleFormComponent } from '../article-form/article-form.component';
+import { ArticleFormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-article-edit',
-  templateUrl: './article-edit.component.html',
-  styleUrls: ['./article-edit.component.scss']
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
 export class ArticleEditComponent implements OnInit {
   _id: string;
@@ -65,7 +65,7 @@ export class ArticleEditComponent implements OnInit {
     this.articleService.update(this._id, data)
       .subscribe(
       (res) => {
-        this.router.navigate(['/articles/:slug', { slug: res.slug }]);
+        this.router.navigate(['/articles/details/', res.slug]);
       },
       (err) => {
         this.formError = err.json().error.toString();

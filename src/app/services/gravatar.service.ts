@@ -6,7 +6,10 @@ export class GravatarService {
   private defaultSize = 20;
   constructor() { }
 
-  getUserAvatarSrc(email: string, size?: number) {
+  getUserAvatarSrc(email: string, size?: number): string {
+    if (!email) {
+      email = 'exemple@email.com';
+    }
     if (!size) {
       size = this.defaultSize;
     }

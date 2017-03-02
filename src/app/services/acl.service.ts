@@ -10,13 +10,27 @@ export class AclService {
   ) { }
 
 
-  isArticleOwner(article) {
+  isArticleOwner(article: { author: { _id: string } }): boolean {
     const user = this.auth.getSessionUser();
     if (
       user &&
-      (!article.author
-        || user._id === article.author._id
-        || user.rights.indexOf(RIGHTS.ADMIN) !== -1
+      (
+        (article.author && user._id === article.author._id) ||
+        user.rights.indexOf(RIGHTS.ADMIN) !== -1
+      )
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  isCommentOwner(comment: { message: string, author: { _id: string } }): boolean {
+    const user = this.auth.getSessionUser();
+    if (
+      user &&
+      (
+        (comment.author && user._id === comment.author._id) ||
+        user.rights.indexOf(RIGHTS.ADMIN) !== -1
       )
     ) {
       return true;

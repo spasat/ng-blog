@@ -5,6 +5,8 @@ import { Title } from '@angular/platform-browser';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import { Subscription } from 'rxjs/Rx';
+import { BusyService } from './services/busy.service';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +14,18 @@ import 'rxjs/add/operator/mergeMap';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  busy: Subscription;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private busyService: BusyService
   ) { }
 
   ngOnInit() {
+    this.busyService
+      .getBusyObserver()
+      .subscribe((sub) => this.busy = sub);
     this.setPageTitle();
   }
 
